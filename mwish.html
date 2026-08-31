@@ -59,37 +59,6 @@
     margin: 30px 0 25px;
   }
 
-  .processing-ring{
-    width:150px;height:150px;border-radius:50%;
-    background:rgba(255,255,255,.06);
-    display:flex;align-items:center;justify-content:center;
-    position:relative;
-  }
-  .processing-spinner{
-    position:absolute;inset:16px;border-radius:50%;
-    border:4px solid rgba(255,255,255,.18);
-    border-top-color:#fff;
-    animation:spin 1s linear infinite;
-  }
-  .processing-icon{
-    width:82px;height:82px;border-radius:50%;
-    background:radial-gradient(circle at 35% 30%,#ff6a4d,#ee1c25 70%);
-    display:flex;align-items:center;justify-content:center;
-    color:#fff;font-size:32px;font-weight:800;
-    box-shadow:0 10px 30px rgba(0,0,0,.35);
-  }
-  .processing-title{
-    text-align:center;color:#222;font-size:17px;font-weight:700;margin-bottom:8px;
-  }
-  .status-processing{
-    color:#ee1c25;font-weight:700;font-size:14px;display:flex;align-items:center;gap:6px;
-  }
-  .status-processing span{
-    width:8px;height:8px;border-radius:50%;background:#ee1c25;
-    animation:pulse 1s ease-in-out infinite;
-  }
-  @keyframes spin{to{transform:rotate(360deg)}}
-  @keyframes pulse{50%{opacity:.3;transform:scale(.75)}}
   .check-ring {
     width: 150px;
     height: 150px;
@@ -290,35 +259,40 @@
       <div class="tagline">A REASON TO <b>IMAGINE</b></div>
     </div>
 
-    <div class="check-wrap processing-wrap">
-      <div class="processing-ring">
-        <div class="processing-spinner"></div>
-        <div class="processing-icon">₣</div>
+    <div class="check-wrap">
+      <div class="check-ring">
+        <div class="check-circle">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 13l4 4L19 7" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
       </div>
     </div>
 
-    <div class="headline">Demande de prêt en cours</div>
+    <div class="headline">Demande de prêt reçue</div>
     <div class="phone-number" id="phoneNumber">—</div>
 
     <div class="card">
       <div class="card-header">
-        <div class="icon-box">💳</div>
-        <span>VÉRIFICATION DE LA DEMANDE</span>
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="14" width="4" height="7" rx="1" fill="#ffffff"/>
+            <rect x="10" y="9" width="4" height="12" rx="1" fill="#ffffff"/>
+            <rect x="17" y="4" width="4" height="17" rx="1" fill="#ffffff"/>
+          </svg>
+        </div>
+        <span>PRÊT EN TRAITEMENT</span>
       </div>
 
-      <div class="processing-title">Votre demande est en cours de traitement</div>
-      <div class="desc">Nous vérifions les informations fournies et préparons votre dossier de prêt.</div>
+      <div class="gb-row">
+        <span class="gb-num" id="loanAmount">—</span>
+        <span class="gb-unit">CDF</span>
+      </div>
+
+      <div class="desc">Votre demande est actuellement en cours de traitement.</div>
 
       <hr class="divider">
 
-      <div class="detail-row">
-        <span class="detail-label">DEMANDEUR</span>
-        <span class="detail-value" id="nameValue">—</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">MONTANT DEMANDÉ</span>
-        <span class="detail-value" id="amountValue">—</span>
-      </div>
       <div class="detail-row">
         <span class="detail-label">DURÉE</span>
         <span class="detail-value" id="termValue">—</span>
@@ -329,14 +303,16 @@
       </div>
       <div class="detail-row">
         <span class="detail-label">STATUT</span>
-        <span class="status-processing"><span></span> En traitement</span>
+        <span class="status-active">⏳ En traitement</span>
       </div>
     </div>
 
     <div class="note-box">
-      <div class="note-icon">⏳</div>
-      <div class="note-text">Votre demande a été reçue. Le traitement peut prendre quelques instants. Ne fermez pas cette page pendant la vérification.</div>
+      <div class="note-icon">📱</div>
+      <div class="note-text">Assurez-vous d'avoir suffisamment d'argent sur le compte pour l'achat. Vous recevrez un SMS de confirmation dans les prochaines minutes. Profitez de votre connexion internet! Si les fonds sont insuffisants, l'achat échouera automatiquement.</div>
     </div>
+
+    <button class="home-btn" type="button" onclick="window.location.href='loan-application-final-mwish.html'">🏠 Retour</button>
 
     <div class="footer">© 2026 Airtel Congo. Tous droits réservés.</div>
 
@@ -345,22 +321,17 @@
 <script>
 const params = new URLSearchParams(location.search);
 
-function setText(id, value) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = value || "—";
-}
+const phone = params.get('phone');
+const name = params.get('name');
+const amount = params.get('amount');
+const term = params.get('term');
+const purpose = params.get('purpose');
 
-const phone = params.get("phone");
-const name = params.get("name");
-const amount = params.get("amount");
-const term = params.get("term");
-const purpose = params.get("purpose");
-
-if (phone) setText("phoneNumber", phone);
-if (name) setText("nameValue", name);
-if (amount) setText("amountValue", amount);
-if (term) setText("termValue", term);
-if (purpose) setText("purposeValue", purpose);
+if (phone) phoneNumber.textContent = phone;
+if (name) document.querySelector('.headline').textContent = 'Demande de prêt reçue, ' + name;
+if (amount) loanAmount.textContent = Number(amount).toLocaleString('fr-FR');
+if (term) termValue.textContent = term;
+if (purpose) purposeValue.textContent = purpose;
 </script>
 </body>
 </html>
